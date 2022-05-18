@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let menuitem of menu" [routerLink]="[menuitem.route]" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a>
+      <mat-icon *ngIf=" menuitem.icon">{{ menuitem.icon }}</mat-icon>
+      <span>{{ menuitem.name }} </span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,13 @@
+<div class="card-wrapper">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{name ?? "Error occured"}}</mat-card-title>
+      <mat-card-subtitle>{{message ?? "No further details"}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="details">
+      <p>
+        {{details}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

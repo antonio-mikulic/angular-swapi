@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Characters</mat-card-title>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="grid?.refresh()">
+        Refresh
+      </button>
+    </mat-card-actions>
+  </mat-card-header>
+  <mat-card-content>
+    <data-grid [dataSource]="dataSource" [columns]="columns" [startInput]="startInput" [pageSize]="10"
+      [pageSizeOptions]="[10]" (onRowClick)="openPerson($event)"></data-grid>
+  </mat-card-content>
+</mat-card>

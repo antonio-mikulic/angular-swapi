@@ -1,0 +1,22 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+app-header {
+  width: 100%;
+}
+
+.page-wrapper {
+  height: calc(100vh - 64px);
+  .page-content {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page-wrapper {
+    height: calc(100vh - 56px);
+  }
+}

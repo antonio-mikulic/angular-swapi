@@ -1,0 +1,29 @@
+mat-nav-list {
+  mat-list-item {
+    display: block;
+    padding: 0px 0px;
+
+    a {
+      height: 20px;
+      padding: 0 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      white-space: nowrap;
+
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+
+    &.active {
+      background-color: rgb(53, 53, 53);
+    }
+  }
+}
+
+.mat-list-base {
+  padding-top: 0;
+}

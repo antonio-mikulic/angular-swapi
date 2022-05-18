@@ -1,0 +1,11 @@
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  .header-brand {
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
