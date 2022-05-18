@@ -7,7 +7,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@app/shared/shared.module';
 
+import { HomewordCardListComponent } from './homeworlds/homeword-card-list/homeword-card-list.component';
+import { HomeworldCardComponent } from './homeworlds/homeworld-card/homeworld-card.component';
 import { HomeworldListComponent } from './homeworlds/homeworld-list/homeworld-list.component';
+import { MovieCardComponent } from './movies/movie-card/movie-card.component';
+import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { PeopleListComponent } from './people/people-list/people-list.component';
 import { PersonCardComponent } from './people/person-card/person-card.component';
 import { PersonPageComponent } from './people/person-page/person-page.component';
@@ -39,11 +43,15 @@ const routes: Routes = [
     HomeworldListComponent,
     PersonPageComponent,
     PersonCardComponent,
+    HomewordCardListComponent,
+    HomeworldCardComponent,
+    MovieCardComponent,
+    MovieListComponent,
   ],
   exports: [
     PeopleListComponent,
     RouterModule,
-    HomeworldListComponent
+    HomeworldListComponent,
   ],
   providers: [
     SwapiService

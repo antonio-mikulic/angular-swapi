@@ -19,7 +19,9 @@
 
       <mat-cell [attr.data-label]="column.displayName" *matCellDef="let row" (click)="handleRowClick(row)">
         <!--With more time this should be split into displaying row based on type (text, image, date...)-->
-        {{row[column.name!]}}
+        <div (click)="handleCellClick(row, column)">
+          {{row[column.name!]}}
+        </div>
       </mat-cell>
     </ng-container>
 

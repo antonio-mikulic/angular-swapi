@@ -11,7 +11,9 @@
 
     <div class="content-wrapper">
       <img mat-card-image src="assets/images/star-wars-characters.jpg" alt="Photo of star wars characters">
-      <mat-card-content>
+      <mat-card-content class="side-content">
+        <app-homeworld-card [homeworld]="homeworld"></app-homeworld-card>
+        <app-movie-list [ids]="movieIds"></app-movie-list>
       </mat-card-content>
     </div>
 

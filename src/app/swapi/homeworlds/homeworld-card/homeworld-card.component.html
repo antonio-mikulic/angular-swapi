@@ -1,0 +1,17 @@
+<div *ngIf="homeworld">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>{{homeworld.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>Population: {{homeworld.population}}</div>
+      <div>Orbital Period: {{homeworld.orbital_period}}</div>
+      <div>Diameter: {{homeworld.diameter}}</div>
+      <div>Climate: {{homeworld.climate}}</div>
+      <div>Gravity: {{homeworld.gravity}}</div>
+      <div>Terrain: {{homeworld.terrain}}</div>
+      <div>Surface Water: {{homeworld.surface_water}}</div>
+      <div>Famous Residents: {{homeworld.residents.length}}</div>
+    </mat-card-content>
+  </mat-card>
+</div>

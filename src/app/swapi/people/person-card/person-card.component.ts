@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, Input, OnDestroy, OnInit } from '@angular/core';
 import { AppComponentBase } from '@app/shared/app-component-base';
 import { FavoriteService } from '@app/shared/favorites/favorite.service';
-import { CapitalizeFirstLetter } from '@app/swapi/swapi-service/swapi-helper';
+import { Homeworld } from '@app/swapi/homeworlds/Homeworld';
+import { CapitalizeFirstLetter, GetIdFromUrl, GetIdsFromUrls } from '@app/swapi/swapi-service/swapi-helper';
 import { SwapiService } from '@app/swapi/swapi-service/swapi.service';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
@@ -23,6 +24,8 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
   person?: Person;
   isFavorite = false;
   uniqueIdentifier = 'people';
+
+  homeworld?: Homeworld;
 
   private unsubscribeSubject: Subject<boolean> = new Subject();
 
@@ -54,6 +57,11 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
 
   ngOnDestroy(): void {
     this.unsubscribeSubject.next(true);
+  }
+
+  get movieIds() {
+    if (!this.person) return [];
+    return GetIdsFromUrls(this.person.films);
   }
 
   getPerson() {
@@ -96,6 +104,25 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
   private _onPerson(person: Person): void {
     this.person = person;
     this._checkFavorite();
+    this._getHomeworld();
+    this.changeDetector.markForCheck();
+  }
+
+  private _getHomeworld() {
+    if (!this.person) return;
+
+    const url = GetIdFromUrl(this.person.url);
+
+    this.swapiService.getSingle<Homeworld>(url, 'planets')
+      .pipe(takeUntil(this.unsubscribeSubject))
+      .subscribe({
+        next: (homeworld: Homeworld) => this._onHomeworld(homeworld),
+        error: (error) => this._onError(error)
+      });
+  }
+
+  private _onHomeworld(homeworld: Homeworld): void {
+    this.homeworld = homeworld;
     this.changeDetector.markForCheck();
   }
 
@@ -109,7 +136,7 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
       this.isFavorite = false;
       return;
     }
-    
+
     const favorites = this.favoriteService.get(this.uniqueIdentifier) as Person[];
     if (!favorites) {
       this.isFavorite = false;

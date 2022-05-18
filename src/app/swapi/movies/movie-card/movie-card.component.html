@@ -1,0 +1,16 @@
+<div *ngIf="!movie">
+  <app-error-component name="Invalid movie" message="Could not find requested movie"></app-error-component>
+</div>
+
+<div *ngIf="movie">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title>{{movie.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>Director: {{movie.director}}</div>
+      <div>Producer: {{movie.producer}}</div>
+      <div>Release: {{movie.release_date | date}}</div>
+    </mat-card-content>
+  </mat-card>
+</div>

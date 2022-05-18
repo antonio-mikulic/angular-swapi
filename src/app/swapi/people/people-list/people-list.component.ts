@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { AppComponentBase } from '@app/shared/app-component-base';
 import { ColumnConfig } from '@app/shared/datagrid/ColumnConfig';
 import { DataGridComponent } from '@app/shared/datagrid/data.grid.component';
+import { GetIdFromUrl } from '@app/swapi/swapi-service/swapi-helper';
 
 import { SwapiService } from '../../swapi-service/swapi.service';
 import { GetPeopleInput } from '../GetPeopleInput';
@@ -55,7 +56,7 @@ export class PeopleListComponent extends AppComponentBase implements AfterViewIn
 
   openPerson(person: Person) {
     // URL will always end with ...people/id/
-    const id = person.url.slice(0, -1).split('/').pop();
+    const id = GetIdFromUrl(person.url);
 
     if (!id) {
       return;
@@ -63,6 +64,7 @@ export class PeopleListComponent extends AppComponentBase implements AfterViewIn
 
     this.router.navigate([`./swapi/people/${id}`]);
   }
+
 
   loadStartInput() {
     const request = localStorage.getItem(this.requestKey);

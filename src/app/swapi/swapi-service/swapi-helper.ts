@@ -44,7 +44,15 @@ export function GetSingleFromSwapi<T>(http: HttpClient, url: string): Observable
 
 export function GetSingleSwapiUrl(id: number, endpoint: string) {
     return `${swapiBaseUrl}/${endpoint}/${id}`;
+}
 
+export function GetIdsFromUrls(urls: string[]) {
+    return urls.map((url) => GetIdFromUrl(url));
+}
+
+export function GetIdFromUrl(url: string) {
+    const idString = url.slice(0, -1).split('/').pop();
+    return Number(idString);
 }
 
 export function CapitalizeFirstLetter(word: string) {

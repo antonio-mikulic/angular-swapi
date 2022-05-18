@@ -1,0 +1,20 @@
+.movie-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  app-movie-card {
+    width: 40%;
+    margin: 1em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie-list {
+    flex-direction: column;
+
+    app-movie-card {
+      width: 100%;
+    }
+  }
+}

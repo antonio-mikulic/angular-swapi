@@ -15,6 +15,7 @@ import { MatTable } from '@angular/material/table';
 
 import { GenericDataSource } from '../datasource/generic.datasource';
 import { IGenericDatasourceRequest } from '../datasource/GenericDatasourceRequest';
+import { CellClickData } from './CellClickData';
 import { ColumnConfig } from './ColumnConfig';
 
 @Component({
@@ -37,6 +38,7 @@ export class DataGridComponent implements AfterViewInit {
 
   @Output() searchCleared: EventEmitter<any> = new EventEmitter<any>();
   @Output() onRowClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onCellClick: EventEmitter<CellClickData> = new EventEmitter<CellClickData>();
 
   displayedColumns: string[] = [];
 
@@ -67,6 +69,10 @@ export class DataGridComponent implements AfterViewInit {
 
   handleRowClick(row: any) {
     this.onRowClick.emit(row);
+  }
+
+  handleCellClick(row: any, column: ColumnConfig) {
+    this.onRowClick.emit({row, column});
   }
 
   setupInput() {

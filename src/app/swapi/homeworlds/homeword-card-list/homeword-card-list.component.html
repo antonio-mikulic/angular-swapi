@@ -1,0 +1,10 @@
+<div *ngIf="!homeworlds$.value.length">
+  No planets found
+</div>
+
+<div *ngIf="homeworlds$.value.length">
+  <h3>{{homeworlds$.value.length == 1 ? "Planet" : "Planets"}}</h3>
+  <div *ngFor="let homeworld of homeworlds$ | async">
+    <app-homeworld-card [homeworld]="homeworld"></app-homeworld-card>
+  </div>
+</div>
