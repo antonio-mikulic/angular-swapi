@@ -1,20 +1,19 @@
-.movie-list {
-  margin-top: 0.5em;
+.people-list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
 
-  app-movie-card {
-    width: 40%;
+  app-person-card {
+    width: 50%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .movie-list {
+  .people-list {
     flex-direction: column;
 
-    app-movie-card {
+    app-person-card {
       width: 100%;
     }
   }

@@ -16,12 +16,12 @@ import { Person } from '../Person';
 })
 export class PersonCardComponent extends AppComponentBase implements OnInit, OnDestroy {
   @Input() id?: number;
+  @Input() person?: Person;
 
   errorMessage?: string;
   detailedError?: string;
 
   loading = true;
-  person?: Person;
   isFavorite = false;
   uniqueIdentifier = 'people';
 
@@ -65,6 +65,16 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
   }
 
   getPerson() {
+    if (this.person) {
+      this._getDetails();
+      return;
+    }
+
+    if (!this.person && !this.id) {
+      this._onError("No person or person id provided!");
+      return;
+    }
+
     if (!this.id) {
       this._onError("Failed to get id");
       return;
@@ -103,6 +113,10 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
 
   private _onPerson(person: Person): void {
     this.person = person;
+    this._getDetails();
+  }
+
+  private _getDetails() {
     this._checkFavorite();
     this._getHomeworld();
     this.changeDetector.markForCheck();
@@ -127,12 +141,7 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
   }
 
   private _checkFavorite() {
-    if (!this.person) {
-      this.isFavorite = false;
-      return;
-    }
-
-    if (!this.id) {
+    if (!this.person && !this.id) {
       this.isFavorite = false;
       return;
     }

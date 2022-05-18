@@ -13,6 +13,7 @@ export class AppSidebarListComponent extends AppComponentBase {
   public menu: MenuItem[] = [
     new MenuItem('/swapi/people', 'People', 'person'),
     new MenuItem('/swapi/planets', 'Planets', 'public'),
+    new MenuItem('/swapi/favorites', 'Favorites', 'favorite'),
     new MenuItem('/random-page', '404', 'gpp_bad'),
   ];
 

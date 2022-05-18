@@ -12,6 +12,7 @@ import { HomeworldCardComponent } from './homeworlds/homeworld-card/homeworld-ca
 import { HomeworldListComponent } from './homeworlds/homeworld-list/homeworld-list.component';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
+import { FavoritePeopleListComponent } from './people/favorite-people-list/favorite-people-list.component';
 import { PeopleListComponent } from './people/people-list/people-list.component';
 import { PersonCardComponent } from './people/person-card/person-card.component';
 import { PersonPageComponent } from './people/person-page/person-page.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: "people", component: PeopleListComponent },
       { path: "people/:id", component: PersonPageComponent },
       { path: "planets", component: HomeworldListComponent },
+      { path: "favorites", component: FavoritePeopleListComponent },
     ]
   },
 ];
@@ -36,7 +38,8 @@ const routes: Routes = [
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   declarations: [
     PeopleListComponent,
@@ -47,6 +50,7 @@ const routes: Routes = [
     HomeworldCardComponent,
     MovieCardComponent,
     MovieListComponent,
+    FavoritePeopleListComponent,
   ],
   exports: [
     PeopleListComponent,
