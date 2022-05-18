@@ -111,7 +111,7 @@ export class PersonCardComponent extends AppComponentBase implements OnInit, OnD
   private _getHomeworld() {
     if (!this.person) return;
 
-    const url = GetIdFromUrl(this.person.url);
+    const url = GetIdFromUrl(this.person.homeworld);
 
     this.swapiService.getSingle<Homeworld>(url, 'planets')
       .pipe(takeUntil(this.unsubscribeSubject))

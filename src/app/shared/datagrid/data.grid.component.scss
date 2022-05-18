@@ -2,6 +2,10 @@ mat-table {
   width: 100%;
 }
 
+.mat-table .mat-row {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 960px) {
   mat-header-row {
     display: none;
