@@ -12,9 +12,8 @@
 
 @media screen and (max-width: 768px) {
   .movie-list {
-    flex-direction: column;
-
     app-movie-card {
+      display: flex;
       width: 100%;
     }
   }

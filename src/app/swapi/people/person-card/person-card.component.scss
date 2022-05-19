@@ -2,6 +2,17 @@ mat-card {
   margin: 0.5em;
 }
 
+app-homeworld-card {
+  display: flex;
+  justify-content: center;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .content-wrapper {
   margin: 1em;
   width: 100%;
